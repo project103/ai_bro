@@ -14,6 +14,15 @@ class Board:
         else:
             raise ValueError("Invalid player. Choose from:", self.players)
 
+    def set_AI_player(self):
+     if self.current_player == 'x':
+        self.AI_player = 'O'
+     elif self.current_player == 'O':
+        self.AI_player = 'x'
+     else:
+        raise ValueError("Invalid current player. Cannot determine AI player.")
+
+
     def set_value(self, layer, row, column):
         if self.__board[layer][row][column] == '':
             self.__board[layer][row][column] = self.current_player

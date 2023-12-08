@@ -3,12 +3,18 @@ import tkinter as tk
 from tkinter import messagebox
 
 class TicTacToeGUI:
+    
     def __init__(self, master):
         self.master = master
         self.master.title("4x4x4 Tic Tac Toe")
 
         self.board = Board()
         self.create_widgets()
+        self.set_players("x")
+        
+    def set_players(self, player):
+        self.player = self.board.set_player("O")
+        self.Ai_player = self.board.set_AI_player()
 
     def create_widgets(self):
         self.buttons = [[[tk.Button(self.master, text='', width=4, height=2, command=lambda layer=l, row=r, col=c: self.make_move(layer, row, col))
@@ -23,6 +29,7 @@ class TicTacToeGUI:
         self.status_label.grid(row=16, columnspan=4)
         self.reset_button = tk.Button(self.master, text="Reset Game", command=self.reset_game)
         self.reset_button.grid(row=17, columnspan=4)
+    
     def reset_game(self):
         self.board.reset_board()
         for layer in range(4):
@@ -37,6 +44,13 @@ class TicTacToeGUI:
             self.buttons[layer][row][col].config(text=self.board.current_player)
             self.board.turn()
             self.update_status()
+
+            if self.board.current_player == self.Ai_player:
+                # ****************************************************************
+                # add here your best_move return and pass it to self.board.set_value(layer, row, col)
+                # ****************************************************************
+                #self.board.turn()  (note remove "#" from this line)
+                self.update_status()
 
             if self.board.is_win('x') or self.board.is_win('O'):  # Corrected 'O' to 'o
                 winner = 'Player X' if self.board.is_win('x') else 'Player O'
