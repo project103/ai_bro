@@ -14,7 +14,7 @@ class TicTacToeGUI:
         self.main = main
         
         
-        self.set_players(main.symbol[0])
+        self.set_players("x")
         self.update_status()
         
     def set_players(self, player):

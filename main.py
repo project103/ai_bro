@@ -23,12 +23,14 @@ class main(tk.Tk):
         self.button1 = tk.Button(self.canvas, text="Ease", command=lambda: self.set_difficulty(1))
         self.button2 = tk.Button(self.canvas, text="Normal", command=lambda: self.set_difficulty(2))
         self.button3 = tk.Button(self.canvas, text="Hard", command=lambda: self.set_difficulty(3))
+        self.button5 = tk.Button(self.canvas, text="vary Hard", command=lambda: self.set_difficulty(4))
         self.button4 = tk.Button(self.canvas, text="Start", command=self.check_and_open_gui)
 
         self.button1.place(relx=0.5, rely=0.4, anchor="center")
         self.button2.place(relx=0.5, rely=0.5, anchor="center")
         self.button3.place(relx=0.5, rely=0.6, anchor="center")
-        self.button4.place(relx=0.5, rely=0.7, anchor="center")
+        self.button5.place(relx=0.5, rely=0.7, anchor="center")
+        self.button4.place(relx=0.5, rely=0.8, anchor="center")
 
         self.radio_var = tk.StringVar()
         self.radio_button1 = tk.Radiobutton(self.canvas, text="X", variable=self.radio_var, value="X",
@@ -49,14 +51,16 @@ class main(tk.Tk):
 
 
     def set_difficulty(self, difficulty):
-        self.label.config(text="Ease" if difficulty == 1 else "Normal" if difficulty == 2 else "Hard")
+        self.label.config(text="Ease" if difficulty == 1 else "Normal" if difficulty == 2 else "Hard"  if difficulty == 3 else "very hard")
         self.val = difficulty
         
 
     def set_symbol(self, selected_symbol):
      self.radio_label.config(text=f"Selected: {selected_symbol}")
      self.symbol.insert(0,selected_symbol)
-
+   
+    def get_symbol(self):
+        return self.symbol
 
 
 
