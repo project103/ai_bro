@@ -3,7 +3,9 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import subprocess
 
-class TicTacToeGame(tk.Tk):
+class main(tk.Tk):
+    symbol = []
+
     def __init__(self):
         super().__init__()
 
@@ -44,21 +46,31 @@ class TicTacToeGame(tk.Tk):
         self.radio_label.place(relx=0.5, rely=0.3, anchor="center")
 
         self.val = None
-        self.symbol = None
+
 
     def set_difficulty(self, difficulty):
         self.label.config(text="Ease" if difficulty == 1 else "Normal" if difficulty == 2 else "Hard")
         self.val = difficulty
+        
 
-    def set_symbol(self, symbol):
-        self.radio_label.config(text=f"Selected: {symbol}")
-        self.symbol = symbol
+    def set_symbol(self, selected_symbol):
+     self.radio_label.config(text=f"Selected: {selected_symbol}")
+     self.symbol.insert(0,selected_symbol)
+
+
+
 
     def check_and_open_gui(self):
         if self.val and self.symbol:
             self.withdraw()  # Hide the current window
             subprocess.run(["python", "gui.py"])
+        elif self.val == None:
+            self.radio_label.config(text="you must select difficulty level!")
+            print(self.symbol)
+        else:
+            self.radio_label.config(text="you must select symbols from (x,O)")
+            
 
 if __name__ == "__main__":
-    app = TicTacToeGame()
+    app = main()
     app.mainloop()

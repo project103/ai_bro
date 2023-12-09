@@ -1,6 +1,7 @@
 from Board import Board
 import tkinter as tk
 from tkinter import messagebox
+from main import main
 
 class TicTacToeGUI:
     
@@ -10,10 +11,14 @@ class TicTacToeGUI:
 
         self.board = Board()
         self.create_widgets()
-        self.set_players("x")
+        self.main = main
+        
+        
+        self.set_players(main.symbol[0])
+        self.update_status()
         
     def set_players(self, player):
-        self.player = self.board.set_player("O")
+        self.player = self.board.set_player(player)
         self.Ai_player = self.board.set_AI_player()
 
     def create_widgets(self):

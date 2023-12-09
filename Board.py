@@ -1,5 +1,5 @@
 class Board:
-    players = ['x', 'O']
+    players = ['x', 'O','']
 
     def __init__(self):
          self.__board =  [[['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']],
@@ -19,6 +19,8 @@ class Board:
         self.AI_player = 'O'
      elif self.current_player == 'O':
         self.AI_player = 'x'
+     elif self.current_player == '':
+        None
      else:
         raise ValueError("Invalid current player. Cannot determine AI player.")
 
