@@ -4,14 +4,13 @@ from PIL import Image, ImageTk
 import subprocess
 
 class main(tk.Tk):
-    symbol = ["O"]
+    symbol = []
 
     def __init__(self):
         super().__init__()
 
         self.geometry("350x350")
         self.title("Tic Tac Toe Game")
-       
 
         self.background_image = Image.open("tic_tac_toe_back.jpg")
         self.background_image = ImageTk.PhotoImage(self.background_image)
@@ -19,7 +18,7 @@ class main(tk.Tk):
         self.canvas = tk.Canvas(self, width=self.background_image.width(), height=self.background_image.height())
         self.canvas.pack(fill="both", expand=True)
 
-        #self.canvas.create_image(0, 0, anchor="nw", image=self.background_image)
+        self.canvas.create_image(0, 0, anchor="nw", image=self.background_image)
 
         self.button1 = tk.Button(self.canvas, text="Ease", command=lambda: self.set_difficulty(1))
         self.button2 = tk.Button(self.canvas, text="Normal", command=lambda: self.set_difficulty(2))
