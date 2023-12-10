@@ -1,17 +1,17 @@
 from Board import Board
 import tkinter as tk
 from tkinter import messagebox
-from main import main
+
 
 class TicTacToeGUI:
     
-    def __init__(self, master):
+    def __init__(self, master ):
         self.master = master
         self.master.title("4x4x4 Tic Tac Toe")
 
         self.board = Board()
         self.create_widgets()
-        self.main = main
+        
         
         
         self.set_players("x")
@@ -72,5 +72,6 @@ class TicTacToeGUI:
 
 if __name__ == "__main__":
     root = tk.Tk()
+    
     app = TicTacToeGUI(root)
     root.mainloop()
